@@ -1,6 +1,8 @@
 Going through the tutorial here:
 https://www.udemy.com/course/react-the-complete-guide-incl-redux/
 
+develop branch will be where sectioned get merged into as progress happens.
+once the class is all complete, develop code will be merged into master branch
 
 # Getting Started with Create React App
 
