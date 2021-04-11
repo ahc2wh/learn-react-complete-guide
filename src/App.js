@@ -7,10 +7,14 @@ class App extends Component {
        return (
         <div className="App">
           <h1>Hi, I'm a React App!!!</h1>
-          <Person />
+          <Person name="Sam" age="11" />
+          <Person name="Larry" age="44"> He also has stock options </Person>
+          <Person name="Rachel" age="21" />
         </div>
         //  react identifies <Person> as a custom component
         // since nothing is nested in between Person, it can be a single < / >
+        // Sam and Rachel's 2nd <p> is empty within them, 
+        // while Larry's has prop.children (the body text) in that 2nd <p>
        );
   }
 }
