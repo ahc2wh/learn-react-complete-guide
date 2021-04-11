@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App'; 
+//App can be any word but conventionally use name of component, 
+//which is also the name of the file
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
