@@ -2,7 +2,36 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Person from './Person/Person';
+import UserInput from './UserInput/UserInput'
+import UserOutput from './UserOutput/UserOutput'
+class App extends Component {
+  //javascript/json form
+  state = {
+    username: 'username'
+  }
 
+  changeUsername = (input_event) => {
+    this.setState({    
+      username: input_event.target.value
+    }
+    )
+  }
+
+  render(){
+    return (
+      <div>
+        <UserInput change={this.changeUsername.bind(this.event)} username={this.state.username}></UserInput>
+        <UserOutput userInput_username={this.state.username}/>
+      </div>
+
+    );
+  }
+
+}
+
+export default App;
+
+/*
 class App extends Component {
   state = {
     persons: [
@@ -106,6 +135,6 @@ class App extends Component {
     );
   }
   */
-}
 
-export default App;
+
+//export default App;
