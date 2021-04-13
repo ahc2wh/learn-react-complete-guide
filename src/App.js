@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import './UserOutput/UserOutput.css'
+
 import Person from './Person/Person';
 import UserInput from './UserInput/UserInput'
 import UserOutput from './UserOutput/UserOutput'
