@@ -1,9 +1,13 @@
 import React from 'react';
 
 const userInput = (props) => {
+    const inline_style = {
+        margin: '10px',
+        color: 'blue'
+    }
     return(
-        <div>
-        Input Username: <input type="text" value={props.username} onChange={props.change}></input>
+        <div style={inline_style}>
+        Input Username: <input type="text" value={props.username} onChange={props.changeEvent}></input>
 
         </div>
 
