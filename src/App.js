@@ -3,6 +3,19 @@ import React from 'react';
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 
+  /*
+    Layout:
+
+    App - NewExpense
+          - ExpenseForm
+
+        - Expenses
+          - Card (React material ui component)
+            - ExpenseItem
+              - Card
+                -ExpenseDate
+  */
+
 const App = () => {
   const expenses = [
     {
@@ -26,6 +39,7 @@ const App = () => {
     },
   ];
 
+  // old syntax, jsx style much easier, looks like native DOM
   // return React.createElement(
   //   'div',
   //   {},
@@ -33,9 +47,21 @@ const App = () => {
   //   React.createElement(Expenses, { items: expenses })
   // );
 
+
+
+  
+  const addExpenseHandler = expense => {
+    console.log('addExpenseHandler in App.js')
+    console.log(expense)
+    //TODO 
+    // - make expenses array a state (for easier passing around to other components)
+    // - update the expenses array to include added NewExpense
+  }
+
   return (
     <div>
-      <NewExpense />
+      {/* grand parent to ExpenseForm, Parent of NewExpense */}
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
