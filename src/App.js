@@ -62,6 +62,7 @@ const App = () => {
     <div>
       {/* grand parent to ExpenseForm, Parent of NewExpense */}
       <NewExpense onAddExpense={addExpenseHandler} />
+      {/* TODO pass updated expenses into Expenses from App.js */}
       <Expenses items={expenses} />
     </div>
   );
