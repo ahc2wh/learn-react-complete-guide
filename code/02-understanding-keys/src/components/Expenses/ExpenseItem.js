@@ -5,7 +5,6 @@ import Card from '../UI/Card';
 import './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
-  console.log("yooo")
   return (
     <Card className='expense-item'>
       <ExpenseDate date={props.date} />

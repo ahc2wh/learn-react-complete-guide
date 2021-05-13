@@ -1,21 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
-
-  /*
-    Layout:
-
-    App - NewExpense
-          - ExpenseForm
-
-        - Expenses
-          - Card (React material ui component)
-            - ExpenseItem
-              - Card
-                -ExpenseDate
-  */
-
 
 const DUMMY_EXPENSES = [
   {
@@ -39,26 +25,28 @@ const DUMMY_EXPENSES = [
   },
 ];
 
-
 const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
-  
-  const addExpenseHandler = newExpenseItem => {
-    setExpenses((previousExpensesList) => {
-      // add new expense at the top of the expensesList, previous state always available as a parameter (like event on DOM elements)
-      return [newExpenseItem, ...previousExpensesList];
-
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
     });
-  }
+  };
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
 
   return (
     <div>
-      {/* grand parent to ExpenseForm, Parent of NewExpense */}
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
