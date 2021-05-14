@@ -8,12 +8,12 @@ import Expenses from './components/Expenses/Expenses';
 
     App - NewExpense
           - ExpenseForm
-
         - Expenses
           - Card (React material ui component)
-            - ExpenseItem
-              - Card
-                -ExpenseDate
+            -ExpensesList
+              - ExpenseItem
+                - Card
+                  - ExpenseDate
   */
 
 

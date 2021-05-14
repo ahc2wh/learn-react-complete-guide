@@ -7,14 +7,7 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
 
-    // having a singe state group (userInput) instead of multi state
-    /*
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: '',
-    });
-   */
+  const [showForm, setShowForm] = useState(false)
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -42,23 +35,24 @@ const ExpenseForm = (props) => {
 
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-    /*
-    setUserInput({
-       ...userInput,
-       enteredAmount: event.target.value,
-     });
-    */
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    /*
-    setUserInput({
-       ...userInput,
-       enteredDate: event.target.value,
-     });
-    */
   };
+
+  // cancel button clears data
+  const cancelHandler = (event) => {
+    event.preventDefault();
+    clearData()
+
+  }
+
+  const clearData = () => {
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('')
+  }
 
   const submitHandler = (event) => {
       event.preventDefault();
@@ -72,50 +66,72 @@ const ExpenseForm = (props) => {
     
       props.onSaveExpenseData(expenseData); // can execute this function now to send to parent NewExpense
       //clear state values by setting empty string after submit
-      setEnteredTitle('');
-      setEnteredAmount('');
-      setEnteredDate('')
+      clearData();
+      toggleShowFormHandler();
+  }
+
+  const toggleShowFormHandler = () => {
+    console.log(showForm)
+    setShowForm(!showForm)
+  }
+
+  let expenseForm;
+
+  if (!showForm) {
+    expenseForm = (
+      <div className='new-expense__closed'>
+        <button onClick={toggleShowFormHandler}>Add New Expense</button>
+      </div>
+    )
+  }
+
+  // gonna be overwritten so using let
+  if (showForm) {
+    expenseForm = (
+      <form onSubmit={submitHandler}>
+        <div className='new-expense__controls'>
+          <div className='new-expense__control'>
+            <label>Title</label>
+            {/* comment inside render like this */}
+            {/* value field makes it two way binding */}
+            <input 
+              type='text' 
+              value={enteredTitle} 
+              onChange={titleChangeHandler} 
+          />
+          </div>
+          <div className='new-expense__control'>
+            <label>Amount</label>
+            <input
+              type='number'
+              min='0.01'
+              step='0.01'
+              value={enteredAmount} 
+              onChange={amountChangeHandler}
+            />
+          </div>
+          <div className='new-expense__control'>
+            <label>Date</label>
+            <input
+              type='date'
+              min='2019-01-01'
+              max='2022-12-31'
+              value={enteredDate} 
+              onChange={dateChangeHandler}
+            />
+          </div>
+        </div>
+        <div className='new-expense__actions'>
+          <button onClick={cancelHandler}>Cancel</button>
+          <button type='submit'>Add Expense</button>
+        </div>
+      </form>
+    )
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className='new-expense__controls'>
-        <div className='new-expense__control'>
-          <label>Title</label>
-          {/* comment inside render like this */}
-          {/* value field makes it two way binding */}
-          <input 
-            type='text' 
-            value={enteredTitle} 
-            onChange={titleChangeHandler} 
-        />
-        </div>
-        <div className='new-expense__control'>
-          <label>Amount</label>
-          <input
-            type='number'
-            min='0.01'
-            step='0.01'
-            value={enteredAmount} 
-            onChange={amountChangeHandler}
-          />
-        </div>
-        <div className='new-expense__control'>
-          <label>Date</label>
-          <input
-            type='date'
-            min='2019-01-01'
-            max='2022-12-31'
-            value={enteredDate} 
-            onChange={dateChangeHandler}
-          />
-        </div>
-      </div>
-      <div className='new-expense__actions'>
-        <button type='submit'>Add Expense</button>
-      </div>
-    </form>
-  );
+    expenseForm
+  )
 };
 
 export default ExpenseForm;

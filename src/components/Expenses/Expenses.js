@@ -22,7 +22,7 @@ const Expenses = (props) => {
 
   console.log(filteredExpenses)
   console.log(filteredExpenses.length+" items from year "+filteredYear)
-
+  
   return (
     <li>
     <Card className="expenses">
