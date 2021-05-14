@@ -45,4 +45,6 @@
 - This made <ExpenseItem> NOT render on the DOM ever...
 ### Explanation
 - TLDR The JSX Parser is treating the object <ExpenseItem> with {} around it as a code block. Use parenthesis
-- Link: https://stackoverflow.com/questions/39629962/arrow-function-without-curly-braces
+- https://stackoverflow.com/questions/39629962/arrow-function-without-curly-braces
+- https://stackoverflow.com/questions/52562134/why-can-i-omit-the-return-statement-with-parenthesis-in-react
+
