@@ -6,14 +6,21 @@ import Expenses from './components/Expenses/Expenses';
   /*
     Layout:
 
-    App - NewExpense
-          - ExpenseForm
-        - Expenses
-          - Card (React material ui component)
-            -ExpensesList
-              - ExpenseItem
-                - Card
-                  - ExpenseDate
+App
+    - NewExpense
+      - ExpenseForm
+    - Expenses
+      - Card
+        - ExpensesFilter
+        - ExpensesChart
+          - Chart
+            - ChartBar
+        -ExpensesList
+          - ExpenseItem
+            - Card
+              - ExpenseDate
+
+
   */
 
 

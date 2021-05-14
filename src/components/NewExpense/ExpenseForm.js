@@ -57,9 +57,10 @@ const ExpenseForm = (props) => {
   const submitHandler = (event) => {
       event.preventDefault();
       // expenseData gets passed up to its parent component (NewExpense.js)
+      // adding the + in front of enteredAmount enforces that value as a number and not a string
       const expenseData = {
           title: enteredTitle,
-          amount: enteredAmount,
+          amount: +enteredAmount,
           date: new Date(enteredDate)
       }
 
